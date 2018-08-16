@@ -8,7 +8,8 @@ class App extends Component {
 
   state = {
     user_id: 0,
-    search: ''
+    search: '',
+    location: []
   }
 
   changeSearch = (string) => {
@@ -30,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Signup changeSearch={this.changeSearch}/>
+        <Signup />
         <Results handleSubmit={this.handleSubmit}/>
       </div>
     );
