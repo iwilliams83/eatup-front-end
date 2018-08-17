@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Signup from '../src/Components/Signup'
-import Results from '../src/Components/Results'
+import AccountContainer from './Account/AccountContainer'
 
 import './App.css';
 
@@ -31,8 +30,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Signup />
-        <Results handleSubmit={this.handleSubmit}/>
+        <AccountContainer />
       </div>
     );
   }

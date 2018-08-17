@@ -1,14 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-export default class Signup extends Component {
+const Signup = ( props ) => {
 
-  render() {
+  const { toggleSignup, submitSignup, updateSignup} = props
+
     return (
       <div>
-          <input type="email" onChange={(e) => this.props.changeSearch(e.target.value)}/>
-        <button>Signup</button>
+        Signup
+        <form >
+          <input type="text" name="name" onChange={(e) => updateSignup(e.target.name, e.target.value)}/>
+          <input type="email" name="email" onChange={(e) => updateSignup(e.target.name, e.target.value)}/>
+        </form>
+        <button type="submit" onClick={submitSignup}>Signup</button>
+        <button onClick={toggleSignup}>Login</button>
       </div>
     )
-  }
-
 }
+
+export default Signup
