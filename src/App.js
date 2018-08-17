@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import AccountContainer from './Account/AccountContainer'
+import SearchContainer from './Search/SearchContainer'
+import NavBar from './Components/NavBar'
 
 import './App.css';
 
 class App extends Component {
 
   state = {
-    user_id: 0,
+    user: {id: 0, name: ''},
     search: '',
     location: []
+  }
+
+  setUser = (obj) => {
+    this.setState({
+      user: {id: obj.id, name: obj.attributes.name}
+    })
+  }
+
+  handleLogout = () => {
+    this.setState({
+      user: {id: 0, name: ''}
+    })
   }
 
   changeSearch = (string) => {
@@ -30,7 +44,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AccountContainer />
+      <NavBar activeUser={this.state.user} handleLogout={this.handleLogout}/>
+         { this.state.user.id === 0 ? <AccountContainer setUser={this.setUser}/> : <SearchContainer />}
       </div>
     );
   }

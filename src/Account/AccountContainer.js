@@ -18,27 +18,54 @@ export default class AccountContainer extends Component {
      }, () => console.log(this.state))
    }
 
-   updateLogin = (string) => {
-
+   updateSignup = (key, value) => {
+     this.setState(prevState => {
+       return {
+       signupInfo: {
+         ...prevState.signupInfo,
+         [key]: value
+       }
+     }})
    }
 
-   updateSignup = (key, value) => {
+   updateLogin = (email) => {
      this.setState({
-       signupInfo: {
-         key: value
-       }
+       loginInfo: email
      })
    }
 
+   submitLogin = () => {
+     let email = this.state.loginInfo
+     fetch('http://localhost:3000/api/v1/login',
+     {method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify({email})
+    })
+    .then(res => res.json())
+    .then(res => {
+      this.props.setUser(res.data)
+    })
+   }
+
    submitSignup = () => {
-     console.log("Getting there")
+     let obj = this.state.signupInfo
+     console.log(obj)
+     fetch('http://localhost:3000/api/v1/signup',
+     {method: "POST",
+      headers: {"Content-Type": "application/json", "Accept": "application/json"},
+      body: JSON.stringify(obj)
+    })
+    .then(res => res.json())
+    .then(res => {
+      this.props.setUser(res.data)
+    })
    }
 
    render() {
     return (
       <div>
       { this.state.showSignup ? <Signup toggleSignup={this.toggleSignup} updateSignup={this.updateSignup} submitSignup={this.submitSignup}/> :
-         <Login toggleSignup={this.toggleSignup}/>}
+         <Login toggleSignup={this.toggleSignup} submitLogin={this.submitLogin} updateLogin={this.updateLogin}/>}
       </div>
     )
  }
