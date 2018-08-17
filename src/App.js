@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AccountContainer from './Account/AccountContainer'
 import SearchContainer from './Search/SearchContainer'
 import NavBar from './Components/NavBar'
+import ResultsContainer from './Results/ResultsContainer'
 
 import './App.css';
 
@@ -9,8 +10,8 @@ class App extends Component {
 
   state = {
     user: {id: 0, name: ''},
-    search: '',
-    location: []
+    searches: [''],
+    results: []
   }
 
   setUser = (obj) => {
@@ -25,27 +26,44 @@ class App extends Component {
     })
   }
 
-  changeSearch = (string) => {
-    this.setState({
-       search: string
-    }, () => console.log(this.state.search))
+  handleAddSearch = () => {
+    this.setState(prevState => {
+      return {
+        searches: [...prevState.searches, '']
+      }
+    })
   }
 
-   handleSubmit = (search) => {
-     fetch('http://localhost:3000/api/v1/restaurants',
+  handleSearchChange = (string) => {
+    this.setState({
+      searches: [string]
+    }, () => console.log(this.state))
+  }
+
+   handleSubmit = () => {
+     let search = this.state.searches[0]
+     fetch('http://localhost:3000/api/v1/search',
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body: JSON.stringify({location: search})
     })
     .then(res => res.json())
-    .then(console.log)
+    .then(res => this.setState({results: res.businesses}))
+  }
+
+  showComponent = () => {
+    if (this.state.results.length === 0){
+      return <SearchContainer handleSearchChange={this.handleSearchChange} handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} />
+    } else {
+      return <ResultsContainer />
+    }
   }
 
   render() {
     return (
       <div className="App">
       <NavBar activeUser={this.state.user} handleLogout={this.handleLogout}/>
-         { this.state.user.id === 0 ? <AccountContainer setUser={this.setUser}/> : <SearchContainer />}
+         { this.state.user.id === 0 ? <AccountContainer setUser={this.setUser}/> : this.showComponent() }
       </div>
     );
   }
