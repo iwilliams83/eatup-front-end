@@ -15,7 +15,7 @@ export default class AccountContainer extends Component {
        return {
          showSignup: !prevState.showSignup
        }
-     }, () => console.log(this.state))
+     })
    }
 
    updateSignup = (key, value) => {
@@ -44,12 +44,12 @@ export default class AccountContainer extends Component {
     .then(res => res.json())
     .then(res => {
       this.props.setUser(res.data)
-    })
+    }
+  )
    }
 
    submitSignup = () => {
      let obj = this.state.signupInfo
-     console.log(obj)
      fetch('http://localhost:3000/api/v1/signup',
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},

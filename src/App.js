@@ -9,14 +9,14 @@ import './App.css';
 class App extends Component {
 
   state = {
-    user: {id: 0, name: ''},
+    user: {id: 0, name: '', favorites: []},
     searches: [''],
-    results: []
+    results: [],
   }
 
   setUser = (obj) => {
     this.setState({
-      user: {id: obj.id, name: obj.attributes.name}
+      user: {id: obj.id, name: obj.attributes.name, favorites: obj.attributes.favorites.map(favorite => favorite.restaurant)}
     })
   }
 
@@ -38,7 +38,6 @@ class App extends Component {
 
   handleSearchChange = (string, index) => {
     this.setState(prevState => {
-      console.log(string, index);
       let prevSearches = [...prevState.searches]
       prevSearches[index] = string
       return {searches: [...prevSearches]}
@@ -56,14 +55,20 @@ class App extends Component {
     .then(res => this.setState({results: res.businesses}))
   }
 
-  addFavorite = () => {
+  addFavorite = (id) => {
     fetch('http://localhost:3000/api/v1/favorites',
     {method: "POST",
      headers: {"Content-Type": "application/json", "Accept": "application/json"},
-     body: JSON.stringify({locations: search})
+     body: JSON.stringify({restaurant: id, user: this.state.user.id})
    })
    .then(res => res.json())
-   .then(res => this.setState({results: res.businesses}))
+   .then(res => {
+     this.setState(prevState => {
+       return {
+         user: {...prevState.user, favorites: [...prevState.user.favorites, id]}
+       }
+     })
+   })
  }
 
   showComponent = () => {
@@ -76,11 +81,18 @@ class App extends Component {
     }
   }
 
+  newSearch = () => {
+    this.setState({
+      searches: [''],
+      results: [],
+    })
+  }
+
 
   render() {
     return (
       <div className="App">
-      <NavBar activeUser={this.state.user} handleLogout={this.handleLogout}/>
+      <NavBar activeUser={this.state.user} handleLogout={this.handleLogout} newSearch={this.newSearch} currentResults={this.state.results}/>
          { this.state.user.id === 0 ? <AccountContainer setUser={this.setUser}/> : this.showComponent() }
       </div>
     );
