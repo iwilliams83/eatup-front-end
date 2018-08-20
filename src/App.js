@@ -34,18 +34,21 @@ class App extends Component {
     })
   }
 
-  handleSearchChange = (string) => {
-    this.setState({
-      searches: [string]
-    }, () => console.log(this.state))
+  handleSearchChange = (string, index) => {
+    this.setState(prevState => {
+      console.log(string, index);
+      let prevSearches = [...prevState.searches]
+      prevSearches[index] = string
+      return {searches: [...prevSearches]}
+    })
   }
 
    handleSubmit = () => {
-     let search = this.state.searches[0]
+     let search = this.state.searches
      fetch('http://localhost:3000/api/v1/search',
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
-      body: JSON.stringify({location: search})
+      body: JSON.stringify({locations: search})
     })
     .then(res => res.json())
     .then(res => this.setState({results: res.businesses}))
@@ -53,9 +56,11 @@ class App extends Component {
 
   showComponent = () => {
     if (this.state.results.length === 0){
-      return <SearchContainer handleSearchChange={this.handleSearchChange} handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} />
+      return <SearchContainer handleSearchChange={this.handleSearchChange}
+        handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit}
+      searches={this.state.searches}/>
     } else {
-      return <ResultsContainer />
+      return <ResultsContainer results={this.state.results}/>
     }
   }
 

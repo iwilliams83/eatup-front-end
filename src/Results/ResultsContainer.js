@@ -4,7 +4,7 @@ export default class ResultsContainer extends Component {
   render(){
     return(
       <div>
-      <span>RESULTS!</span>
+      {console.log(this.props)}
       </div>
     )
   }
