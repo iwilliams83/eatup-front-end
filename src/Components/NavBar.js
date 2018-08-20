@@ -1,11 +1,12 @@
 import React from 'react'
+import logo from '../Eat-Up-Logo.png'
 
 const NavBar = (props) => {
 
     return (
       <div>
-        <h2>EAT UP</h2>
-        { props.activeUser.id === 0 ? null : <button onClick={props.handleLogout}>Logout</button>}
+        <img src={logo} />
+        { props.activeUser.id === 0 ? <h2>Welcome</h2> : <div><h2>Hi, {props.activeUser.name}!</h2><br/><button onClick={props.handleLogout}>Logout</button></div>}
       </div>
     )
 

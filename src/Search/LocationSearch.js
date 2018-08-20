@@ -6,7 +6,7 @@ export default class LocationSearch extends Component {
      return (
        <div>
        <h3>hi</h3>
-          <input type="text" onChange={(e) => this.props.handleSearchChange(e.target.value)}/>
+          <input type="text" onChange={(e) => this.props.handleSearchChange(e.target.value, this.props.name)}/>
        </div>
      )
    }
