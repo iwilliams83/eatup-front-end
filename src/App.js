@@ -22,7 +22,9 @@ class App extends Component {
 
   handleLogout = () => {
     this.setState({
-      user: {id: 0, name: ''}
+      user: {id: 0, name: ''},
+      searches: [''],
+      results: []
     })
   }
 
