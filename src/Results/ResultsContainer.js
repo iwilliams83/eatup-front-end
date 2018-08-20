@@ -4,7 +4,7 @@ import Result from './Result'
 
 export default class ResultsContainer extends Component {
   render(){
-    let results = this.props.results.map(result => <Result key={result.id} result={result} />)
+    let results = this.props.results.map(result => <Result key={result.id} addFavorite={this.props.addFavorite} result={result} />)
     let style = {
       width: '90%',
       margin: 'auto',

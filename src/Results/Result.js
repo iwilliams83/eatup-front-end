@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Icon } from 'semantic-ui-react'
 
 const Result = props => {
   const { name, image_url, location, display_phone } = props.result
-  console.log(props.result)
+
+
+
   return (
         <Card>
       <Image src={image_url} size='medium' />
@@ -13,7 +15,8 @@ const Result = props => {
           </Card.Header>
           <Card.Description>
             {location.display_address[0]}<br/>{location.display_address[1]}<br/>{display_phone}
-          </Card.Description>
+          </Card.Description><br/>
+          <Icon onClick={this.props.addFavorite} name="heart outline" color='orange'/>
         </Card.Content>
     </Card>
   )

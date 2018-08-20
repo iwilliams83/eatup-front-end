@@ -54,15 +54,26 @@ class App extends Component {
     .then(res => this.setState({results: res.businesses}))
   }
 
+  addFavorite = () => {
+    fetch('http://localhost:3000/api/v1/favorites',
+    {method: "POST",
+     headers: {"Content-Type": "application/json", "Accept": "application/json"},
+     body: JSON.stringify({locations: search})
+   })
+   .then(res => res.json())
+   .then(res => this.setState({results: res.businesses}))
+ }
+
   showComponent = () => {
     if (this.state.results.length === 0){
       return <SearchContainer handleSearchChange={this.handleSearchChange}
         handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit}
       searches={this.state.searches}/>
     } else {
-      return <ResultsContainer results={this.state.results}/>
+      return <ResultsContainer addFavorite={this.addFavorite} results={this.state.results}/>
     }
   }
+
 
   render() {
     return (
