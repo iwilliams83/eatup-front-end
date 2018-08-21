@@ -17,13 +17,13 @@ const NavBar = (props) => {
             >
               <Container>
               <Menu.Item>
-              <Header as='h2' color="white" textAlign='center'>Eat Up</Header>
+              <Header as='h2' style={{color: 'white'}} textAlign='center'>Eat Up</Header>
               </Menu.Item>
-                <Menu.Item color="white" as='a' active>
+                <Menu.Item as='a' style={{color: 'white'}} active>
                   Home
                 </Menu.Item>
-                <Menu.Item color="white" as='a'>Favorites</Menu.Item>
-                { props.currentResults.length > 0 ? <Menu.Item as='a' onClick={props.newSearch}>New Search</Menu.Item>: null }
+                <Menu.Item style={{color: 'white'}} as='a'>Favorites</Menu.Item>
+                { props.currentResults.length > 0 ? <Menu.Item as='a' style={{color: 'white'}} onClick={props.newSearch}>New Search</Menu.Item>: null }
                 <Menu.Item color="white" position='right'>
                   <Button as='a' onClick={props.handleLogout} style={{ marginLeft: '0.5em' }}>
                     Log Out
@@ -35,7 +35,7 @@ const NavBar = (props) => {
 
     return (
       <div>
-        { props.activeUser.id === 0 ? <div><img src={logo} alt="Logo"/><h3>Welcome<br/><br/></h3></div> : <div>{loggedInMenu}</div>}
+        { props.activeUser.id === 0 ? <div><img src={logo} alt="Logo"/><h3>Eat Up helps you find a central location to eat!<br/><br/></h3></div> : <div>{loggedInMenu}</div>}
       </div>
     )
 

@@ -74,8 +74,8 @@ class App extends Component {
   showComponent = () => {
     console.log(this.state)
     if (this.state.results.length === 0){
-      return <SearchContainer handleSearchChange={this.handleSearchChange}
-        handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit}
+      return <SearchContainer className="background" handleSearchChange={this.handleSearchChange}
+        handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} className="background"
       searches={this.state.searches}/>
     } else {
       return <ResultsContainer addFavorite={this.addFavorite} results={this.state.results}/>
@@ -94,7 +94,7 @@ class App extends Component {
     return (
       <div className="App">
       <NavBar activeUser={this.state.user} handleLogout={this.handleLogout} newSearch={this.newSearch} currentResults={this.state.results}/>
-         { this.state.user.id === 0 ? <AccountContainer setUser={this.setUser}/> : this.showComponent() }
+         { this.state.user.id === 0 ? <AccountContainer className="background" setUser={this.setUser}/> : this.showComponent() }
       </div>
     );
   }

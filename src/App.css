@@ -22,6 +22,18 @@
   font-size: large;
 }
 
+.ui.button {
+  background-color: white;
+}
+
+.ui.secondary.menu.item {
+  color: white;
+}
+
+.background {
+  background-image: url('./friends-and-food.png')
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
