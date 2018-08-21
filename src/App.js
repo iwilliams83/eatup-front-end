@@ -3,6 +3,7 @@ import AccountContainer from './Account/AccountContainer'
 import SearchContainer from './Search/SearchContainer'
 import NavBar from './Components/NavBar'
 import ResultsContainer from './Results/ResultsContainer'
+import FavoritesContainer from './Favorites/FavoritesContainer'
 
 import './App.css';
 
@@ -12,6 +13,7 @@ class App extends Component {
     user: {id: 0, name: '', favorites: []},
     searches: [''],
     results: [],
+    showFaves: false
   }
 
   setUser = (obj) => {
@@ -72,11 +74,12 @@ class App extends Component {
  }
 
   showComponent = () => {
-    console.log(this.state)
-    if (this.state.results.length === 0){
-      return <SearchContainer className="background" handleSearchChange={this.handleSearchChange}
+    if (this.state.showFaves === true){
+      return <FavoritesContainer favorites={this.state.user.favorites}/>
+    } else if (this.state.results.length === 0){
+      return <div className="background" ><SearchContainer handleSearchChange={this.handleSearchChange}
         handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} className="background"
-      searches={this.state.searches}/>
+      searches={this.state.searches}/></div>
     } else {
       return <ResultsContainer addFavorite={this.addFavorite} results={this.state.results}/>
     }
@@ -90,10 +93,16 @@ class App extends Component {
   }
 
 
+toggleFaves = () => {
+  this.setState(prevState => {
+    return {showFaves: !prevState.showFaves}
+  })
+}
+
   render() {
     return (
       <div className="App">
-      <NavBar activeUser={this.state.user} handleLogout={this.handleLogout} newSearch={this.newSearch} currentResults={this.state.results}/>
+      <NavBar toggleFaves={this.toggleFaves} activeUser={this.state.user} handleLogout={this.handleLogout} newSearch={this.newSearch} currentResults={this.state.results}/>
          { this.state.user.id === 0 ? <AccountContainer className="background" setUser={this.setUser}/> : this.showComponent() }
       </div>
     );

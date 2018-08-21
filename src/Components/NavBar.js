@@ -8,7 +8,6 @@ import {
 } from 'semantic-ui-react'
 
 const NavBar = (props) => {
-  console.log(props)
   const loggedInMenu = (
               <Menu
               secondary
@@ -17,12 +16,9 @@ const NavBar = (props) => {
             >
               <Container>
               <Menu.Item>
-              <Header as='h2' style={{color: 'white'}} textAlign='center'>Eat Up</Header>
+              <Header as='h2' style={{color: 'white'}} textAlign='center'>Hi, {props.activeUser.name}!</Header>
               </Menu.Item>
-                <Menu.Item as='a' style={{color: 'white'}} active>
-                  Home
-                </Menu.Item>
-                <Menu.Item style={{color: 'white'}} as='a'>Favorites</Menu.Item>
+                <Menu.Item style={{color: 'white'}} as='a' onClick={props.toggleFaves}>My Favorites</Menu.Item>
                 { props.currentResults.length > 0 ? <Menu.Item as='a' style={{color: 'white'}} onClick={props.newSearch}>New Search</Menu.Item>: null }
                 <Menu.Item color="white" position='right'>
                   <Button as='a' onClick={props.handleLogout} style={{ marginLeft: '0.5em' }}>

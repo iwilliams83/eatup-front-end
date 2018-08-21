@@ -30,8 +30,47 @@
   color: white;
 }
 
+
 .background {
-  background-image: url('./friends-and-food.png')
+  background: url('./friends-and-food.png') center;
+	height: 100vh;
+}
+
+.location-search-div {
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.location-search {
+  padding-bottom: 10px;
+}
+
+.search-buttons {
+  border-radius: 5px;
+  width: 245px;
+  border-color: rgb(246, 148, 84);
+  background-color: rgb(246, 148, 84);
+  height: 30px;
+  color: white;
+}
+
+.space {
+  margin-left: 10px;
+}
+
+.search-buttons:hover {
+  background-color: #f2711c;
+}
+
+.location-input {
+  color: black;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  width: 500px;
+  height: 50px;
+  font-size: 40px;
+  border: 0px;
 }
 
 @keyframes App-logo-spin {
