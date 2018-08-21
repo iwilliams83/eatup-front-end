@@ -72,6 +72,7 @@ class App extends Component {
  }
 
   showComponent = () => {
+    console.log(this.state)
     if (this.state.results.length === 0){
       return <SearchContainer handleSearchChange={this.handleSearchChange}
         handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit}
