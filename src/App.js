@@ -10,7 +10,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    user: {id: 0, name: '', favorites: []},
+    user: {id: 0, name: '', favorites: []}, //no need to store favorites on state
     searches: [''],
     results: [],
     showFaves: false
@@ -75,12 +75,14 @@ class App extends Component {
 
   showComponent = () => {
     if (this.state.showFaves === true){
-      return <FavoritesContainer favorites={this.state.user.favorites}/>
-    } else if (this.state.results.length === 0){
+      return <FavoritesContainer favorites={this.state.user.favorites} userId={this.state.user.id}/>
+    }
+    else if (this.state.results.length === 0){
       return <div className="background" ><SearchContainer handleSearchChange={this.handleSearchChange}
         handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} className="background"
       searches={this.state.searches}/></div>
-    } else {
+    }
+    else {
       return <ResultsContainer addFavorite={this.addFavorite} results={this.state.results}/>
     }
   }

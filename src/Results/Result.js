@@ -5,7 +5,6 @@ const Result = props => {
   const { id, name, image_url, location, display_phone } = props.result
 
 
-
   return (
         <Card>
       <Image src={image_url} size='medium' />
