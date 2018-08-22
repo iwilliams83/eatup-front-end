@@ -41,7 +41,7 @@ const Signup = ( props ) => {
               </Segment>
             </Form>
             <Message>
-              Already have an account? <a href='#' onClick={toggleSignup}>Log In</a>
+              Already have an account? <a onClick={toggleSignup}>Log In</a>
             </Message>
           </Grid.Column>
         </Grid>

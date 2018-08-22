@@ -78,7 +78,7 @@ class App extends Component {
       return <FavoritesContainer favorites={this.state.user.favorites} userId={this.state.user.id}/>
     }
     else if (this.state.results.length === 0){
-      return <div className="background" ><SearchContainer handleSearchChange={this.handleSearchChange}
+      return <div className="background"><SearchContainer handleSearchChange={this.handleSearchChange}
         handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} className="background"
       searches={this.state.searches}/></div>
     }
