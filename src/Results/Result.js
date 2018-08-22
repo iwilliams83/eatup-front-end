@@ -16,6 +16,7 @@ const Result = props => {
             {location.display_address[0]}<br/>{location.display_address[1]}<br/>{display_phone}
           </Card.Description><br/>
           <Icon onClick={() => props.addFavorite(id)} name="heart outline" color='orange'/>
+          Add to Favorites
         </Card.Content>
     </Card>
   )

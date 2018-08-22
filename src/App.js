@@ -31,11 +31,14 @@ class App extends Component {
   }
 
   handleAddSearch = () => {
+    if (this.state.searches.length > 0 && this.state.searches.length <= 3) {
     this.setState(prevState => {
       return {
         searches: [...prevState.searches, '']
       }
-    })
+    }) } else {
+      null
+    }
   }
 
   handleSearchChange = (string, index) => {
@@ -78,9 +81,9 @@ class App extends Component {
       return <FavoritesContainer favorites={this.state.user.favorites} userId={this.state.user.id}/>
     }
     else if (this.state.results.length === 0){
-      return <div className="background"><SearchContainer handleSearchChange={this.handleSearchChange}
-        handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit} className="background"
-      searches={this.state.searches}/></div>
+      return <SearchContainer handleSearchChange={this.handleSearchChange}
+        handleAddSearch={this.handleAddSearch} handleSubmit={this.handleSubmit}
+      searches={this.state.searches}/>
     }
     else {
       return <ResultsContainer addFavorite={this.addFavorite} results={this.state.results}/>
