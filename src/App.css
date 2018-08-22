@@ -32,7 +32,8 @@
 
 
 .background {
-  background: url('./friends-and-food.png') center;
+  background: url('./friends-and-food.png') no-repeat center center;
+  background-size: cover;
 	height: 100vh;
 }
 
