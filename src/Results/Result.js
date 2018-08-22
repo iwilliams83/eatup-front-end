@@ -3,7 +3,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 
 const Result = props => {
   const { yelpId, name, image_url, location, phone } = props.result
-  //const address = location.display_address.join(' ')
+
 
   return (
         <Card>

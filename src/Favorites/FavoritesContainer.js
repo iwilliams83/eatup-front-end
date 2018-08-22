@@ -15,6 +15,7 @@ export default class FavoritesContainer extends Component {
   }
 
   render(){
+    console.log('FavoritesContainer:', this.state.favorites)
     const faves = this.state.favorites
     faves.shift()
 
