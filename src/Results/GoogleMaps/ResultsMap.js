@@ -13,7 +13,7 @@ const ResultsMap = withScriptjs(withGoogleMap((props) => {
   return (
     <GoogleMap
     defaultZoom={14}
-    center={ { lat: props.results[0]['coordinates']['latitude'], lng: props.results[0]['coordinates']['longitude'] } }
+    center={ { lat: props.results[9]['coordinates']['latitude'], lng: props.results[0]['coordinates']['longitude'] } }
     >
       {markers}
     </GoogleMap>
