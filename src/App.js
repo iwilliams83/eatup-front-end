@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AccountContainer from './Account/AccountContainer'
 import SearchContainer from './Search/SearchContainer'
-import NavBar from './Components/NavBar'
+import NavBar from './NavBar/NavBar'
 import ResultsContainer from './Results/ResultsContainer'
 import FavoritesContainer from './Favorites/FavoritesContainer'
 
