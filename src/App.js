@@ -27,7 +27,8 @@ class App extends Component {
     this.setState({
       user: {id: 0, name: ''},
       searches: [''],
-      results: []
+      results: [],
+      showFaves: false
     })
   }
 
