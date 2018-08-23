@@ -93,14 +93,13 @@ class App extends Component {
   })
  }
 
- //Deletes Favorite
-//  deleteFav = (userId, FavId) => {
-//    fetch(`http://localhost:3000/api/v1/users/${userId}`,
-//    {method: "DELETE",
-//     headers: {"Content-Type": "application/json", "Accept": "application/json"},
-//     body: JSON.stringify({yelpId: id })
-//  })
-// }
+ deleteFav = (userId, favId) => {
+   fetch(`http://localhost:3000/api/v1/favorites/${userId}`,
+   {method: "DELETE",
+    headers: {"Content-Type": "application/json", "Accept": "application/json"},
+    body: JSON.stringify({yelpId: favId })
+ })
+}
 
  toggleFaves = () => {
    this.setState(prevState => {

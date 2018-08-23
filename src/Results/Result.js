@@ -11,8 +11,10 @@ export default class Result extends Component{
     })
     this.props.addFavorite(this.props.result['yelp-id'], name, this.props.result['image-url'], location, phone)
   }
+
   render(){
     const { name, location, phone } = this.props.result
+
     return (
           <Card>
         <Image src={this.props.result['image-url']} size='medium' />

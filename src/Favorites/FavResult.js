@@ -2,10 +2,11 @@ import React from 'react'
 import { Card, Image, Icon } from 'semantic-ui-react'
 
 const FavResult = props => {
-  const { name, image_url, location, phone } = props.result
+  const { name, location, phone, id } = props.result
+
   return (
         <Card>
-      <Image src={image_url} size='medium' />
+      <Image src={props.result["image-url"]} size='medium' />
         <Card.Content>
           <Card.Header>
             {name}
@@ -15,7 +16,7 @@ const FavResult = props => {
             <br/>
             {phone}
           </Card.Description>
-          <Icon onClick={() => props.removeFavorite(props.userId, props.dataId)}
+          <Icon onClick={() => props.deleteFav(props.userId, props.result["yelp-id"])}
             name="trash" color='orange'/>
             Remove Favorite
         </Card.Content>
