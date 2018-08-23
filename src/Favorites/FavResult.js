@@ -3,7 +3,6 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 
 const FavResult = props => {
   const { name, image_url, location, phone } = props.result
-  //const address = location.display_address.join(' ')
   return (
         <Card>
       <Image src={image_url} size='medium' />
@@ -15,7 +14,10 @@ const FavResult = props => {
             {location}
             <br/>
             {phone}
-          </Card.Description><br/>
+          </Card.Description>
+          <Icon onClick={() => props.removeFavorite(props.userId, props.dataId)}
+            name="trash" color='orange'/>
+            Remove Favorite
         </Card.Content>
     </Card>
   )

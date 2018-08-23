@@ -17,7 +17,7 @@ export default class ResultsContainer extends Component {
     let style = {
       width: '90%',
       margin: 'auto',
-      paddingTop: '20px'
+      paddingTop: '50px'
     }
 
     return(

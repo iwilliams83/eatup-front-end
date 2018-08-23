@@ -19,11 +19,11 @@ export default class FavoritesContainer extends Component {
       const allFaves = this.state.myFaves
       const standardResults = allFaves.map(res => {
       return {
-        yelpId: res["attributes"]["yelp-id"], name: res.attributes.name, image_url: res["attributes"]["image-url"], location: res.attributes.location, phone: res["attributes"]["display-phone"]}
+         dataId: res.id, yelpId: res["attributes"]["yelp-id"], name: res["attributes"]["name"], image_url: res["attributes"]["image-url"], location: res["attributes"]["location"], phone: res["attributes"]["display-phone"]}
       })
 
-      let results = standardResults.map(result => <FavResult key={result.yelpId}
-        result={result} />)
+      let results = standardResults.map(result => <FavResult dataId={result.dataId} key={result.yelpId}
+       userId={this.props.userId} result={result} deleteFav={this.props.deleteFav}/>)
 
         let style = {
           width: '90%',
@@ -33,6 +33,7 @@ export default class FavoritesContainer extends Component {
 
     return(
       <div style={style}>
+         <h2>{this.props.username}'s Favorites</h2>
         <Grid relaxed columns={4}>
           <Grid.Row>
             <Grid.Column>

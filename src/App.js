@@ -92,6 +92,15 @@ class App extends Component {
   })
  }
 
+ //Deletes Favorite
+//  deleteFav = (userId, FavId) => {
+//    fetch(`http://localhost:3000/api/v1/users/${userId}`,
+//    {method: "DELETE",
+//     headers: {"Content-Type": "application/json", "Accept": "application/json"},
+//     body: JSON.stringify({yelpId: id })
+//  })
+// }
+
  toggleFaves = () => {
    this.setState(prevState => {
      return {showFaves: !prevState.showFaves}
@@ -100,7 +109,7 @@ class App extends Component {
 
   showComponent = () => {
     if (this.state.showFaves === true){
-      return <FavoritesContainer userId={this.state.user.id} myFaves={this.state.user.favorites}/>
+      return <FavoritesContainer userId={this.state.user.id} username={this.state.user.name} deleteFav={this.deleteFav}/>
     }
     else if (this.state.results.length === 0){
       return <SearchContainer handleSearchChange={this.handleSearchChange}
@@ -119,7 +128,6 @@ class App extends Component {
       results: [],
     })
   }
-
 
 
   render() {
