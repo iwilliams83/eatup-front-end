@@ -20,7 +20,7 @@ const NavBar = (props) => {
               </Menu.Item>
                 <Menu.Item style={{color: 'white'}} as='a' onClick={props.toggleFaves}>My Favorites</Menu.Item>
                 { props.currentResults.length > 0 ? <Menu.Item as='a' style={{color: 'white'}} onClick={props.newSearch}>New Search</Menu.Item>: null }
-                <Menu.Item color="white" position='right'>
+                <Menu.Item style={{color: 'white'}} position='right'>
                   <Button as='a' onClick={props.handleLogout} style={{ marginLeft: '0.5em' }}>
                     Log Out
                   </Button>

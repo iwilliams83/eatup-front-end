@@ -4,14 +4,23 @@ import Result from './Result'
 import ResultsMapContainer from './GoogleMaps/ResultsMapContainer'
 
 export default class ResultsContainer extends Component {
+
   render(){
-    console.log(this.props.results)
-    let results = this.props.results.map(result => <Result key={result.id} addFavorite={this.props.addFavorite} result={result} />)
+    const allResults = this.props.results
+    const standardResults = allResults.map(res => {
+      return {['yelp-id']: res.id, name: res.name, ['image-url']: res.image_url, location: res.location.display_address.join(' '), phone: res.display_phone}
+    })
+
+    let results = standardResults.map(result => <Result key={result.yelpId}
+      addFavorite={this.props.addFavorite} result={result}
+      saveFavorite={this.props.saveFavorite}/>)
+
     let style = {
       width: '90%',
       margin: 'auto',
-      paddingTop: '20px'
+      paddingTop: '50px'
     }
+
     return(
       <div>
       <ResultsMapContainer results={this.props.results} />

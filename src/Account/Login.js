@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Message, Segment } from 'semantic-ui-react'
 
 const Login = props => {
 
@@ -39,7 +39,7 @@ const Login = props => {
               </Segment>
             </Form>
             <Message>
-              New user? <a href='#' onClick={toggleSignup}>Sign Up</a>
+              New user? <a onClick={toggleSignup}>Sign Up</a>
             </Message>
           </Grid.Column>
         </Grid>
