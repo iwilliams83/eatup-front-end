@@ -39,7 +39,7 @@ const Login = props => {
               </Segment>
             </Form>
             <Message>
-              New user? <a href='#' onClick={toggleSignup}>Sign Up</a>
+              New user? <a onClick={toggleSignup}>Sign Up</a>
             </Message>
           </Grid.Column>
         </Grid>

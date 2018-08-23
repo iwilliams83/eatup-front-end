@@ -4,9 +4,9 @@ import Result from '../Results/Result'
 
 export default class FavoritesContainer extends Component {
 
-  state = {
-    favorites:[]
-  }
+   state = {
+     favorites: []
+   }
 
   componentDidMount(){
     const id = this.props.userId
@@ -27,3 +27,16 @@ export default class FavoritesContainer extends Component {
     )
   }
 }
+
+// state = {
+//   favorites:[]
+// }
+
+// componentDidMount(){
+//   const id = this.props.userId
+//   fetch(`http://localhost:3000/api/v1/users/${id}`)
+//     .then(res => res.json()).then(res => this.setState({favorites: res}))
+// }
+
+// const faves = this.state.favorites
+// faves.shift()

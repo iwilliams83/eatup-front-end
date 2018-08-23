@@ -9,14 +9,17 @@ export default class ResultsContainer extends Component {
     const standardResults = allResults.map(res => {
       return {['yelp-id']: res.id, name: res.name, ['image-url']: res.image_url, location: res.location.display_address.join(' '), phone: res.display_phone}
     })
+
     let results = standardResults.map(result => <Result key={result.yelpId}
       addFavorite={this.props.addFavorite} result={result}
       saveFavorite={this.props.saveFavorite}/>)
+
     let style = {
       width: '90%',
       margin: 'auto',
       paddingTop: '20px'
     }
+
     return(
       <div style={style}>
         <Grid relaxed columns={4}>
