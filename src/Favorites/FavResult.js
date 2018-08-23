@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Image, Icon } from 'semantic-ui-react'
 
-const Result = props => {
-  const { yelpId, name, image_url, location, phone } = props.result
+const FavResult = props => {
+  const { name, image_url, location, phone } = props.result
   //const address = location.display_address.join(' ')
   return (
         <Card>
@@ -16,12 +16,9 @@ const Result = props => {
             <br/>
             {phone}
           </Card.Description><br/>
-          <Icon onClick={() => props.addFavorite(yelpId, name, image_url, location, phone)}
-            name="heart outline" color='orange'/>
-            Add to Favorites
         </Card.Content>
     </Card>
   )
 }
 
-export default Result
+export default FavResult
