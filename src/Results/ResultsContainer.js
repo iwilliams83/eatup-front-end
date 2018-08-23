@@ -7,7 +7,7 @@ export default class ResultsContainer extends Component {
   render(){
     const allResults = this.props.results
     const standardResults = allResults.map(res => {
-      return {yelpId: res.id, name: res.name, image_url: res.image_url, location: res.location.display_address.join(' '), phone: res.display_phone}
+      return {['yelp-id']: res.id, name: res.name, ['image-url']: res.image_url, location: res.location.display_address.join(' '), phone: res.display_phone}
     })
     let results = standardResults.map(result => <Result key={result.yelpId}
       addFavorite={this.props.addFavorite} result={result}
