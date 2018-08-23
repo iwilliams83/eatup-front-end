@@ -16,7 +16,6 @@ export default class FavoritesContainer extends Component {
 
   render(){
 
-    console.log('FavoritesContainer:', this.state.favorites)
     const faves = this.state.favorites
     const allFaves = faves.map(fave => {
       return <FavResult key={fave.id} dataId={fave.id} userId={this.props.userId} result={fave.attributes} deleteFav={this.props.deleteFav}/>

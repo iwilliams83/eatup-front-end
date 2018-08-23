@@ -3,7 +3,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 
 const FavResult = props => {
   const { name, location, phone } = props.result
-  console.log("In Faves", props.dataId)
+  
   return (
         <Card>
       <Image src={props.result["image-url"]} size='medium' />
@@ -16,7 +16,7 @@ const FavResult = props => {
             <br/>
             {phone}
           </Card.Description>
-          <Icon onClick={() => props.deleteFav(props.dataId)}
+          <Icon onClick={() => props.deleteFav(props.userId, props.result['yelp-id'])}
             name="trash" color='orange'/>
             Remove Favorite
         </Card.Content>
