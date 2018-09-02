@@ -3,7 +3,7 @@ import { Card, Image, Icon } from 'semantic-ui-react'
 
 export default class Result extends Component{
   state = { liked: false }
-  // I think this item needs state in order to toggle liked / not liked
+
   toggleLiked = () => {
     const { name, location, phone } = this.props.result
     this.setState(prevState => {
@@ -34,5 +34,3 @@ export default class Result extends Component{
   }
 
 }
-
-//export default Result

@@ -4,6 +4,7 @@ import SearchContainer from './Search/SearchContainer'
 import NavBar from './NavBar/NavBar'
 import ResultsContainer from './Results/ResultsContainer'
 import FavoritesContainer from './Favorites/FavoritesContainer'
+import {URL_BASE} from './constants'
 
 import './App.css';
 
@@ -53,7 +54,7 @@ class App extends Component {
 
    handleSubmit = () => {
      let search = this.state.searches
-     fetch('http://localhost:3000/api/v1/search',
+     fetch(`${URL_BASE}/api/v1/search`,
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body: JSON.stringify({locations: search})
@@ -65,7 +66,7 @@ class App extends Component {
   //Send all restaurant data through here: back end will persist to restaurant table
   //Makes Connection between Restaurant & User
   addFavorite = (id, name, image_url, address, display_phone) => {
-    fetch('http://localhost:3000/api/v1/favorites',
+    fetch(`${URL_BASE}/api/v1/favorites`,
     {method: "POST",
      headers: {"Content-Type": "application/json", "Accept": "application/json"},
      body: JSON.stringify({ restaurant: id, user: this.state.user.id })
@@ -84,7 +85,7 @@ class App extends Component {
 
 //Makes New Restaurant
  saveFavorite = (id, name, image_url, address, display_phone, props) => {
-   fetch('http://localhost:3000/api/v1/restaurants',
+   fetch(`${URL_BASE}/api/v1/restaurants`,
    {method: "POST",
     headers: {"Content-Type": "application/json", "Accept": "application/json"},
     body: JSON.stringify({yelpId: id, name: name,
@@ -94,12 +95,10 @@ class App extends Component {
  }
 
  deleteFav = (userId, dataId) => {
-   fetch(`http://localhost:3000/api/v1/favorites/${userId}`,
+   fetch(`${URL_BASE}/api/v1/favorites/${userId}`,
    {method: "DELETE",
     headers: {"Content-Type": "application/json", "Accept": "application/json"},
     body: JSON.stringify({yelpId: dataId})})
-    // find the fav in the state array & remove it from the array
-    // filter state for any fav that is not the removed fav
   }
 
 

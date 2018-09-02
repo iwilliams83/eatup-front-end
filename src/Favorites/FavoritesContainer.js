@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Grid } from 'semantic-ui-react'
 import FavResult from './FavResult'
+import { URL_BASE } from '../constants'
 
 export default class FavoritesContainer extends Component {
 
@@ -20,7 +21,7 @@ export default class FavoritesContainer extends Component {
 
   componentDidMount(){
     const id = this.props.userId
-    fetch(`http://localhost:3000/api/v1/users/${id}`)
+    fetch(`${URL_BASE}/api/v1/users/${id}`)
       .then(res => res.json()).then(res => this.setState({favorites: res.data}))
   }
 
@@ -123,27 +124,3 @@ export default class FavoritesContainer extends Component {
     )
   }
 }
-
-//       const allFaves = this.state.myFaves
-//       const standardResults = allFaves.map(res => {
-//       return {
-//          dataId: res.id, yelpId: res["attributes"]["yelp-id"], name: res["attributes"]["name"], image_url: res["attributes"]["image-url"], location: res["attributes"]["location"], phone: res["attributes"]["display-phone"]}
-//       })
-//
-//       let results = standardResults.map(result => <FavResult dataId={result.dataId} key={result.yelpId}
-//        userId={this.props.userId} result={result} deleteFav={this.props.deleteFav}/>
-//
-// =======
-
-// state = {
-//   favorites:[]
-// }
-
-// componentDidMount(){
-//   const id = this.props.userId
-//   fetch(`http://localhost:3000/api/v1/users/${id}`)
-//     .then(res => res.json()).then(res => this.setState({favorites: res}))
-// }
-
-// const faves = this.state.favorites
-// faves.shift()

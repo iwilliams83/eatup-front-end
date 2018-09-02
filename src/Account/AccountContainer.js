@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Signup from './Signup'
 import Login from './Login'
+import { URL_BASE } from '../constants'
 
 export default class AccountContainer extends Component {
 
@@ -36,7 +37,7 @@ export default class AccountContainer extends Component {
 
    submitLogin = () => {
      let email = this.state.loginInfo
-     fetch('http://localhost:3000/api/v1/login',
+     fetch(`${URL_BASE}/api/v1/login`,
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body: JSON.stringify({email})
@@ -50,7 +51,7 @@ export default class AccountContainer extends Component {
 
    submitSignup = () => {
      let obj = this.state.signupInfo
-     fetch('http://localhost:3000/api/v1/signup',
+     fetch(`${URL_BASE}/api/v1/signup`,
      {method: "POST",
       headers: {"Content-Type": "application/json", "Accept": "application/json"},
       body: JSON.stringify(obj)
