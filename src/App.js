@@ -137,7 +137,8 @@ class App extends Component {
     return (
       <div className="App">
       <NavBar toggleFaves={this.toggleFaves} activeUser={this.state.user}
-        handleLogout={this.handleLogout} newSearch={this.newSearch} currentResults={this.state.results}/>
+        handleLogout={this.handleLogout} newSearch={this.newSearch}
+        currentResults={this.state.results} showFaves={this.state.showFaves}/>
          { this.state.user.id === 0 ? <AccountContainer className="background" setUser={this.setUser}/> : this.showComponent() }
       </div>
     );

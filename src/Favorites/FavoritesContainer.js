@@ -8,6 +8,16 @@ export default class FavoritesContainer extends Component {
      favorites: []
    }
 
+  removeFave = (id) => {
+    let temp = [...this.state.favorites]
+    let filtered = temp.filter(fave => {
+      if ((fave.attributes['yelp-id'] !== id)) return fave
+    })
+    this.setState({
+      favorites: filtered
+    })
+  }
+
   componentDidMount(){
     const id = this.props.userId
     fetch(`http://localhost:3000/api/v1/users/${id}`)
@@ -18,7 +28,10 @@ export default class FavoritesContainer extends Component {
 
     const faves = this.state.favorites
     const allFaves = faves.map(fave => {
-      return <FavResult key={fave.id} dataId={fave.id} userId={this.props.userId} result={fave.attributes} deleteFav={this.props.deleteFav}/>
+      return <FavResult key={fave.id} dataId={fave.id}
+        userId={this.props.userId} result={fave.attributes}
+        deleteFav={this.props.deleteFav}
+        removeFave={this.removeFave}/>
     })
 
     let style = {
